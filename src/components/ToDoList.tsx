@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { categoryState, toDoSelector, toDoState, Categories } from './atoms';
+import {
+	categoryState,
+	toDoSelector,
+	customCategoryState,
+	Categories,
+} from './atoms';
 import CreateToDo from './CreateToDo';
 import ToDo from './ToDo';
+import CreateCategory from './CreateCategory';
 
 const ToDoWrap = styled.div`
 	width: 500px;
@@ -19,7 +25,7 @@ const Title = styled.h1`
 `;
 
 const SubTitle = styled.h3`
-	margin-bottom: 10px;
+	margin: 10px 0;
 	font-size: 13px;
 `;
 
@@ -38,7 +44,7 @@ function ToDoList() {
 	// const [toDo, doing, done] = useRecoilValue(toDoSelector);
 
 	const toDos = useRecoilValue(toDoSelector);
-
+	const customCategories = useRecoilValue(customCategoryState);
 	const [category, setCategory] = useRecoilState(categoryState);
 	const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
 		setCategory(event.currentTarget.value as any);
@@ -52,11 +58,18 @@ function ToDoList() {
 		<ToDoWrap>
 			<Title>To Do List</Title>
 
+			<CreateCategory />
+
 			<SubTitle>아래 카테고리를 선택 후 입력해주세요.</SubTitle>
 			<ToDoSeletor value={category} onInput={onInput}>
 				<option value={Categories.TODO}>TO DO</option>
 				<option value={Categories.DOING}>DOING</option>
 				<option value={Categories.DONE}>DONE</option>
+				{customCategories.map(category => (
+					<option key={category.id} value={category.title}>
+						{category.title}
+					</option>
+				))}
 			</ToDoSeletor>
 
 			<CreateToDo />

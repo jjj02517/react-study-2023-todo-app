@@ -11,6 +11,12 @@ export type IToDo = {
 	id: number;
 	category: Categories;
 };
+
+export interface ICustomCategory {
+	title: string;
+	id: number;
+}
+
 // Atom Effects
 const localStorageEffect =
 	(key: string) =>
@@ -28,6 +34,11 @@ const localStorageEffect =
 				: localStorage.setItem(key, JSON.stringify(newValue));
 		});
 	};
+
+export const customCategoryState = atom<ICustomCategory[]>({
+	key: 'customCategory',
+	default: [],
+});
 
 export const categoryState = atom<Categories>({
 	key: 'category',
