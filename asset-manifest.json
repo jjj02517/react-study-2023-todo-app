@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react-study-2023-todo-app/static/js/main.6507a163.js",
+    "main.js": "/react-study-2023-todo-app/static/js/main.43fdabaf.js",
     "index.html": "/react-study-2023-todo-app/index.html",
-    "main.6507a163.js.map": "/react-study-2023-todo-app/static/js/main.6507a163.js.map"
+    "main.43fdabaf.js.map": "/react-study-2023-todo-app/static/js/main.43fdabaf.js.map"
   },
   "entrypoints": [
-    "static/js/main.6507a163.js"
+    "static/js/main.43fdabaf.js"
   ]
 }
